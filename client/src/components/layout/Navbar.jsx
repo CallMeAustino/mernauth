@@ -10,7 +10,40 @@ class Navbar extends Component {
     this.props.logoutUser();
   };
   render() {
-    return (
+    if (localStorage.jwtToken) {
+      return (
+        <div className="navbar-fixed">
+          <nav className="z-depth-0">
+            <div className="nav-wrapper black">
+              <Link
+                to="/"
+                style={{
+                  fontFamily: "monospace"
+                }}
+                className="col s5 brand-logo center white-text"
+              >
+                <i className="material-icons">code</i>
+                HOME
+              </Link>
+              <button
+                style={{
+                  marginRight: "10px",
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem"
+                }}
+                onClick={this.onLogoutClick}
+                className="btn right"
+              >
+                Logout
+              </button>
+            </div>
+          </nav>
+        </div>
+      );
+    } else {
+      return(
       <div className="navbar-fixed">
         <nav className="z-depth-0">
           <div className="nav-wrapper black">
@@ -24,23 +57,11 @@ class Navbar extends Component {
               <i className="material-icons">code</i>
               HOME
             </Link>
-            <button
-              style={{
-                marginRight: "10px",
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn right"
-            >
-              Logout
-            </button>
-          </div>
+            </div>
         </nav>
       </div>
-    );
+      )
+    }
   }
 }
 Navbar.propTypes = {

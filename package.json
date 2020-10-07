@@ -27,6 +27,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react-countup": "^4.3.3",
+    "react-images-upload": "^1.2.8",
     "validator": "^13.1.17"
   },
   "devDependencies": {

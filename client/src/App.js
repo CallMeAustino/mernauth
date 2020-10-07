@@ -11,6 +11,12 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+import Footer from "./components/footer/Footer";
+import Halloffame from "./components/halloffame/Halloffame";
+import Robot from "./components/robot/Robot";
+import Robotcreator from "./components/robotcreator/Robotcreator";
+
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -41,6 +47,10 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/robot" component={Robot} />
+              <PrivateRoute exact path="/footer" component={Footer} />
+              <PrivateRoute exact path="/halloffame" component={Halloffame} />
+              <PrivateRoute exact path="/robotcreator" component={Robotcreator} />
             </Switch>
           </div>
         </Router>

@@ -6,6 +6,7 @@ import ImageUploader from 'react-images-upload';
 class Robotcreator extends Component {
     
     constructor(props) {
+        debugger
         super(props);
          this.state = { pictures: [] };
          this.onDrop = this.onDrop.bind(this);

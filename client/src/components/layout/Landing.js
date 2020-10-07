@@ -1,20 +1,49 @@
 import React, { Component } from "react";
 import { Link, Router } from "react-router-dom";
+import CountUp from 'react-countup';
+import './Landing.css';
+
 class Landing extends Component {
+  constructor() {
+    super()
+    this.state = {
+      videoURL: 'http://techslides.com/demos/sample-videos/small.mp4'
+    }
+    // this.wanderers = null;
+    // this.count = null;
+  }
+  updateCount() {
+    // const target = +document.querySelector('#counter').getAttribute('data-target');
+    // if (+document.querySelector('#counter').innerHTML < target){
+    //   let int = +document.querySelector('#counter').innerText + 1000;
+    //   document.querySelector('#counter').innerText = parseInt(int);
+    //   this.setState({
+    //     wanderers: +document.querySelector('#counter').innerHTML + 10
+    //   })
+    // } else {
+    //   return;
+    // }
+  }
+  componentDidUpdate(){
+  }
+
+  componentDidMount () {
+  }
   render() {
     return (
+    <div>
+      <video id="background-video" loop autoPlay muted>
+                <source src={this.state.videoURL} type="video/mp4" />
+                <source src={this.state.videoURL} type="video/ogg" />
+                Your browser does not support the video tag.
+      </video>
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Build</b> a login/auth app with the{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-              scratch
+              <b>Login</b> to submit your own stupid ideas.{" "}
+              <CountUp end={1384312} duration={10} separator={","}/> worthless robots submitted.
             </h4>
-            <p className="flow-text grey-text text-darken-1">
-              Create a (minimal) full-stack app with user authentication via
-              passport and JWTs
-            </p>
             <br />
             <div className="col s6">
               <Link
@@ -45,6 +74,7 @@ class Landing extends Component {
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Router } from "react-router-dom";
+import { Link, Router, Redirect } from "react-router-dom";
 import CountUp from 'react-countup';
 import './Landing.css';
 
@@ -30,15 +30,20 @@ class Landing extends Component {
   componentDidMount () {
   }
   render() {
-    return (
-    <div>
-      <video id="background-video" loop autoPlay muted>
+    if (localStorage.jwtToken) {
+      return (
+        <Redirect to="/dashboard"/>
+      )
+    } else {
+      return (
+        <div>
+          <video id="background-video" loop autoPlay muted>
                 <source src={this.state.videoURL} type="video/mp4" />
                 <source src={this.state.videoURL} type="video/ogg" />
                 Your browser does not support the video tag.
-      </video>
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
+          </video>
+          <div style={{ height: "75vh" }} className="container valign-wrapper">
+          <div className="row">
           <div className="col s12 center-align">
             <h4>
               <b>Login</b> to submit your own stupid ideas.{" "}
@@ -71,11 +76,11 @@ class Landing extends Component {
                 Log In
               </Link>
             </div>
+            </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
     );
-  }
+  }}
 }
 export default Landing;

@@ -2,31 +2,46 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ImageUploader from 'react-images-upload';
+import ReactFileReader from 'react-file-reader';
 
 class Robotcreator extends Component {
     
     constructor(props) {
-        debugger
         super(props);
-         this.state = { pictures: [] };
+         this.state = { 
+             picture: null,
+            };
          this.onDrop = this.onDrop.bind(this);
     }
  
+    componentDidUpdate() {
+        const image = document.getElementById('image-preview');
+        image.srcObject = this.state.picture;
+    }
+
     onDrop(picture) {
+        debugger
         this.setState({
-            pictures: this.state.pictures.concat(picture),
+            picture: picture
         });
     }
  
     render() {
+
         return (
-            <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />
+            <>
+            
+                <img id='image-preview'/>
+                <div style={{ verticalAlign: 'center' }}className="center">
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText='Choose image'
+                        onChange={this.onDrop}
+                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                        maxFileSize={5242880}
+                    />
+                </div>
+            </>
         );
     }
 }
